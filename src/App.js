@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { useContext, useEffect, useState } from "react";
+import "./App.css";
+import Main from "./Main";
+// import Header from "./pages/Header";
+// import SideNav from "./pages/SideNav";
+import Login from "./pages/login/Login";
+import Routers from "./routes/Routers";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
+import { AppContext } from "./Context";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const { userData, setUserData, loginID } = useContext(AppContext);
+  // const [exited, setexited] = useState("");
+
+  // const isLoggedIn = userData !== null;
+  const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   if (loginID == null) {
+  //     navigate("/");
+  //     console.warn(" app js loginID");
+  //   }
+  // },[]);
+
+  return <>{loginID ? <Main /> : <Login />}</>;
 }
 
 export default App;
