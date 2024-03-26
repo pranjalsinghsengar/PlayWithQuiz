@@ -56,11 +56,6 @@ const Login = () => {
           // localStorage.setItem("userData", Data.uid);
           navigate("/main");
         });
-
-        // const credential = GoogleAuthProvider.credentialFromResult(result);
-        // const token = credential.accessToken;
-        // console.log("credential", credential);
-        // console.log("token", token);
       })
       .catch((error) => {
         // Handle errors here
@@ -68,13 +63,12 @@ const Login = () => {
       });
   };
 
-  // useEffect(() => {
-  //   localStorage.setItem("userData", JSON.stringify(userData));
-  // }, [userData]);
-
   return (
-    <div className='w-full h-full overflow-hidden relative flex justify-center items-center'>
-      <img className='w-screen' src='/Login.png' alt='' />
+    <div
+      className='w-full h-full overflow-hidden relative flex justify-center items-center bg-cover object-center'
+      style={{ backgroundImage: `url("/Login.png")` }}
+    >
+      {/* <img className='object-fill bg-cover' src='/Login.png' alt='' /> */}
       <LoginContainer className='p-20 px-28 absolute'>
         <div
           className=' bg-white p-3 px-16 rounded-md cursor-pointer flex items-center gap-2'

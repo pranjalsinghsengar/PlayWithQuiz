@@ -38,16 +38,27 @@ const Routers = () => {
   }, [location]);
   console.warn(location);
 
-
   return (
     <Routes>
-      <Route path='/' element={<Navigate replace to='/home' />} />
-      <Route path='/home' Component={Home} />
-      {<Route path='/allquizes' Component={AllQuizes} />}
-      {<Route path='/upcoming' Component={Upcoming} />}
-      {<Route path='/Type' Component={ChooseType} />}
-      {<Route path='/InitiateForm' Component={InitiateForm} />}
-      {<Route path='/AddQuestions' Component={AddQuestions} />}
+      <Route path='/' element={<Navigate replace to={`/home/${loginID}`} />} />
+      {<Route path={`/home/${loginID}`} Component={Home} />}
+
+      {<Route path={`/home/${loginID}/Type`} Component={ChooseType} />}
+      {
+        <Route
+          path={`/home/${loginID}/Type/InitiateForm`}
+          Component={InitiateForm}
+        />
+      }
+      {
+        <Route
+          path={`/home/${loginID}/Type/InitiateForm/AddQuestions`}
+          Component={AddQuestions}
+        />
+      }
+
+      <Route path={`/home/${loginID}/allquizes`} Component={AllQuizes} />
+      <Route path={`/home/${loginID}/upcoming`} Component={Upcoming} />
     </Routes>
   );
 };

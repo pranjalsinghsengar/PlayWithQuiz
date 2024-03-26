@@ -58,7 +58,7 @@ const AddQuestions = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (location.pathname === "/AddQuestions") {
+    if (location.pathname === "AddQuestions") {
       setShowData(true);
     }
   });

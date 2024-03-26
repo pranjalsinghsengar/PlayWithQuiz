@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import MenuItems from "../components/MenuItems";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { AppContext } from "../Context";
 import PrevData from "./PrevData";
 
@@ -13,80 +13,67 @@ const SideNavContainer = styled.div`
 
 const SideNav = () => {
   const {
+    loginID,
     ShowData,
-    activeHome,
-    activeAllquizes,
-    activeUpcomming,
-    setActiveAllquizes,
     setActiveHome,
+    setActiveAllquizes,
     setActiveUpcomming,
   } = useContext(AppContext);
+
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
     const currentPath = location.pathname;
-    if (currentPath === "/main") {
-      navigate("/home");
-    }
-    // console.log("asdfdasf");
-  }, [location.pathname]);
-
-  useEffect(() => {
-    // Get the current pathname from the location object
-    const currentPath = location.pathname;
-    // Determine which button should be active based on the current pathname
+    console.log("====================================");
+    console.log(currentPath);
+    console.log("====================================");
     switch (currentPath) {
-      case "/home":
-        setActiveHome(true);
-        setActiveAllquizes(false);
-        setActiveUpcomming(false);
+      case `/home/${loginID}`:
+        setActiveStates(true, false, false);
         break;
-      case "/allquizes":
-        setActiveHome(false);
-        setActiveAllquizes(true);
-        setActiveUpcomming(false);
+      case `/home/${loginID}/allquizes`:
+        setActiveStates(false, true, false);
         break;
-      case "/upcoming":
-        setActiveHome(false);
-        setActiveAllquizes(false);
-        setActiveUpcomming(true);
+      case `/home/${loginID}/upcoming`:
+        setActiveStates(false, false, true);
         break;
       default:
-        // Handle other routes if needed
+        // Reset all states if path doesn't match
+        setActiveStates(false, false, false);
         break;
     }
-  }, [location.pathname]);
+  }, [location.pathname, loginID]);
 
-  const HomeHandler = () => {
-    navigate("/home");
+  const setActiveStates = (home, allQuizes, upcoming) => {
+    setActiveHome(home);
+    setActiveAllquizes(allQuizes);
+    setActiveUpcomming(upcoming);
   };
 
-  const AllquizesHandler = () => {
-    navigate("/allquizes");
+  const navigateTo = (path) => {
+    navigate(`/home/${loginID}${path}`);
   };
-
-  const UpcommingHandler = () => {
-    navigate("/upcoming");
-  };
-
   return (
     <SideNavContainer className='flex-col flex justify-between'>
       <div>
-        <MenuItems title='Home' active={activeHome} onClick={HomeHandler} />
         <MenuItems
-          title='All Quizes'
-          active={activeAllquizes}
-          onClick={AllquizesHandler}
+          title='Home'
+          active={location.pathname === `/home/${loginID}`}
+          onClick={() => navigate("")}
         />
         <MenuItems
-          title='Upcomming'
-          active={activeUpcomming}
-          onClick={UpcommingHandler}
+          title='All Quizes'
+          active={location.pathname === `/home/${loginID}/allquizes`}
+          onClick={() => navigate(`/home/${loginID}/allquizes`)}
+        />
+        <MenuItems
+          title='Upcoming'
+          active={location.pathname === `/home/${loginID}/upcoming`}
+          onClick={() => navigate(`/home/${loginID}/upcoming`)}
         />
       </div>
       {ShowData && <PrevData />}
-
       {/* <button onClick={()=> }>Sign out</button> */}
     </SideNavContainer>
   );

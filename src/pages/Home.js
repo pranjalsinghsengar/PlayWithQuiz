@@ -6,8 +6,8 @@ const CreateBtn = styled.div`
   --WH: 2rem;
   width: var(--WH);
   height: var(--WH);
-  background: #C5FFE8;
-  border-radius:10px ;
+  background: #c5ffe8;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,16 +20,21 @@ const CreateBtn = styled.div`
   /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; */
 
-position: relative;
-
+  position: relative;
 `;
 
 const Home = () => {
   const navigate = useNavigate();
   return (
     <>
-      <CreateBtn className="shadow-xl" onClick={() => navigate("/Type")}>+
-      <div className="text-xs p-5 rounded-xl bg-white absolute w-20 -right-10 shadow-lg text-center" style={{}}>Create New Quiz</div>
+      <CreateBtn className='shadow-xl' onClick={() => navigate("Type")}>
+        +
+        <div
+          className='text-xs p-5 rounded-xl bg-white absolute w-20 -right-10 shadow-lg text-center'
+          style={{}}
+        >
+          Create New Quiz
+        </div>
       </CreateBtn>
     </>
   );

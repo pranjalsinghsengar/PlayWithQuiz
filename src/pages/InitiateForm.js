@@ -24,7 +24,7 @@ const InitiateForm = () => {
   const location = useLocation();
 
   const handleSubmit = () => {
-    navigate("/AddQuestions");
+    navigate("AddQuestions");
     // setShowData(true);
   };
 

@@ -81,7 +81,7 @@ const ChooseType = () => {
     },
   ];
   const handleSubmit = () => {
-    navigate("/InitiateForm");
+    navigate("InitiateForm");
   };
 
   return (
@@ -111,7 +111,14 @@ const ChooseType = () => {
                       >
                         {type}
                       </Span>
-                      <div className='  h-96'>
+                      {/* <div
+                        className='h-96 bg-cover'
+                        // style={{
+                        //   backgroundImage: `url(${item.images[typeIndex].imageUrl})`,
+                        //   opacity:
+                        //     select === `${type.replace(/\s+/g, "")}` ? 1 : 0.3,
+                        // }}
+                      >
                         <Img
                           className='h-full'
                           alt=''
@@ -122,7 +129,16 @@ const ChooseType = () => {
                               : { opacity: 0.3 }
                           }
                         />
-                      </div>
+                      </div> */}
+
+                      <div
+                        className='w-[25rem] h-96 bg-cover object-center '
+                        style={{
+                          backgroundImage: `url(${item.images[typeIndex].imageUrl})`,
+                          opacity:
+                            select === `${type.replace(/\s+/g, "")}` ? 1 : 0.3,
+                        }}
+                      ></div>
                     </TypeDiv>
                   );
                 })}
@@ -138,14 +154,14 @@ const ChooseType = () => {
                 ? { background: "#FBBEBE" }
                 : { background: "#FF9292" }
             }
-            className='px-10 py-3 rounded-sm m-10 absolute  bottom-0'
+            className='px-10 py-3 rounded-md m-10 fixed  bottom-10'
           >
             {WrongSelection}
           </div>
         ) : (
           <div
             onClick={handleSubmit}
-            className='cursor-pointer bg-brd px-10 py-3 rounded-sm m-10 absolute  bottom-0'
+            className='cursor-pointer bg-brd px-10 py-3 rounded-md m-10 absolute  bottom-10'
           >
             {" "}
             Next{" "}
