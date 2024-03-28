@@ -28,7 +28,12 @@ function App() {
   //   }
   // },[]);
 
-  return <>{loginID ? <Main /> : <Login />}</>;
+  return (
+    <>
+      <Main />{" "}
+    </>
+    //  <>{loginID ? <Main /> : <Login />}</>;
+  );
 }
 
 export default App;

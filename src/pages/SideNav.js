@@ -29,13 +29,13 @@ const SideNav = () => {
     console.log(currentPath);
     console.log("====================================");
     switch (currentPath) {
-      case `/home/${loginID}`:
+      case `/`:
         setActiveStates(true, false, false);
         break;
-      case `/home/${loginID}/allquizes`:
+      case `/home/allquizes`:
         setActiveStates(false, true, false);
         break;
-      case `/home/${loginID}/upcoming`:
+      case `/home/upcoming`:
         setActiveStates(false, false, true);
         break;
       default:
@@ -52,25 +52,25 @@ const SideNav = () => {
   };
 
   const navigateTo = (path) => {
-    navigate(`/home/${loginID}${path}`);
+    navigate(`/home${path}`);
   };
   return (
     <SideNavContainer className='flex-col flex justify-between'>
       <div>
         <MenuItems
           title='Home'
-          active={location.pathname === `/home/${loginID}`}
+          active={location.pathname === `/`}
           onClick={() => navigate("")}
         />
         <MenuItems
           title='All Quizes'
-          active={location.pathname === `/home/${loginID}/allquizes`}
-          onClick={() => navigate(`/home/${loginID}/allquizes`)}
+          active={location.pathname === `/home/allquizes`}
+          onClick={() => navigate(`/home/allquizes`)}
         />
         <MenuItems
           title='Upcoming'
-          active={location.pathname === `/home/${loginID}/upcoming`}
-          onClick={() => navigate(`/home/${loginID}/upcoming`)}
+          active={location.pathname === `/home/upcoming`}
+          onClick={() => navigate(`/home/upcoming`)}
         />
       </div>
       {ShowData && <PrevData />}

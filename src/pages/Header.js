@@ -41,7 +41,7 @@ const Header = () => {
                 popUp ? "border-[#ffffff]/0" : " border-[#56f36b]"
               } `}
             >
-              {data.displayName}
+              {data?.displayName}
             </div>
             {popUp && (
               <div

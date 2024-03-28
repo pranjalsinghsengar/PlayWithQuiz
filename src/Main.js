@@ -21,7 +21,7 @@ const Main = () => {
         <SideNav />
         {/* Router */}
         <div className='' style={{ width: "100%", height: "85%" }}>
-          {loginID && <Routers />}
+          <Routers />
         </div>
       </div>
     </>

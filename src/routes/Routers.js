@@ -40,25 +40,20 @@ const Routers = () => {
 
   return (
     <Routes>
-      <Route path='/' element={<Navigate replace to={`/home/${loginID}`} />} />
-      {<Route path={`/home/${loginID}`} Component={Home} />}
+      {/* <Route path='/' element={<Navigate replace to={`/`} />} /> */}
+      {<Route path={`/`} Component={Home} />}
 
-      {<Route path={`/home/${loginID}/Type`} Component={ChooseType} />}
+      {<Route path={`/Type`} Component={ChooseType} />}
+      {<Route path={`/Type/InitiateForm`} Component={InitiateForm} />}
       {
         <Route
-          path={`/home/${loginID}/Type/InitiateForm`}
-          Component={InitiateForm}
-        />
-      }
-      {
-        <Route
-          path={`/home/${loginID}/Type/InitiateForm/AddQuestions`}
+          path={`/Type/InitiateForm/AddQuestions`}
           Component={AddQuestions}
         />
       }
 
-      <Route path={`/home/${loginID}/allquizes`} Component={AllQuizes} />
-      <Route path={`/home/${loginID}/upcoming`} Component={Upcoming} />
+      <Route path={`/allquizes`} Component={AllQuizes} />
+      <Route path={`/upcoming`} Component={Upcoming} />
     </Routes>
   );
 };
